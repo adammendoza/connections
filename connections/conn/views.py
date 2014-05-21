@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import time
 
 def index(request):
 	context = {}
@@ -10,6 +11,7 @@ def signup(request):
 	return render(request, 'signup.html', context)
 
 def dashboard(request):
+	time.sleep(5)
 	context = {}
 	return render(request, 'dashboard.html', context)
 
@@ -22,5 +24,6 @@ def message(request):
 	return render(request, 'message.html', context)
 
 def upgrade(request):
+	time.sleep(2)
 	context = {}
 	return render(request, 'upgrade.html', context)
