@@ -65,6 +65,8 @@
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/dropwizard-core-0.7.0-javadoc.jar!/" />
     </JAVADOC>
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/dropwizard-core-0.7.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

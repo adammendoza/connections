@@ -3,6 +3,7 @@ package hack.connections;
 import com.codahale.metrics.health.HealthCheck;
 
 public class AppHealthCheck extends HealthCheck {
+
     private final String template;
 
     public AppHealthCheck(String template) {

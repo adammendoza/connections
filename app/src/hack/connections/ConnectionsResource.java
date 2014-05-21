@@ -2,6 +2,7 @@ package hack.connections;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
+import hack.connections.model.Item1;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

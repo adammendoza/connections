@@ -1,4 +1,4 @@
-package hack.connections;
+package hack.connections.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;

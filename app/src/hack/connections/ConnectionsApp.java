@@ -1,8 +1,12 @@
 package hack.connections;
 
+import hack.connections.cmx.CMXWatcher;
+import hack.connections.cmx.CMXWatcherManager;
+import hack.connections.res.WelcomeResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
 
 public class ConnectionsApp extends Application<ConnectionsConfiguration> {
 
@@ -17,13 +21,22 @@ public class ConnectionsApp extends Application<ConnectionsConfiguration> {
 
     @Override
     public void initialize(Bootstrap<ConnectionsConfiguration> bootstrap) {
-        // nothing to do yet
+        bootstrap.addBundle(new ViewBundle());
     }
 
     @Override
     public void run(ConnectionsConfiguration conf, Environment env) {
         env.healthChecks().register("template", new AppHealthCheck(conf.getTemplate()));
+
+//        final DBIFactory factory = new DBIFactory();
+//        final DBI jdbi = factory.build(env, conf.getDataSourceFactory(), "postgresql");
+//        final UserDAO dao = jdbi.onDemand(UserDAO.class);
+//        environment.jersey().register(new UserResource(dao));
+
+        env.lifecycle().manage(new CMXWatcherManager(new CMXWatcher()));
+
         env.jersey().register(new ConnectionsResource(conf.getTemplate(), conf.getDefaultName() ));
+        env.jersey().register(new WelcomeResource());
     }
 
 }

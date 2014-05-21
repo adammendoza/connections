@@ -9,6 +9,10 @@
     <orderEntry type="jdk" jdkName="java-8-oracle" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="io.dropwizard:dropwizard-core:0.7.0" level="project" />
+    <orderEntry type="library" name="io.dropwizard:dropwizard-views-mustache:0.7.0" level="project" />
+    <orderEntry type="library" name="io.dropwizard:dropwizard-jdbi:0.7.0" level="project" />
+    <orderEntry type="library" name="javax.persistence:persistence-api:1.0.2" level="project" />
+    <orderEntry type="library" name="io.dropwizard:dropwizard-client:0.7.0" level="project" />
   </component>
 </module>
 
