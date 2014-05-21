@@ -1,0 +1,70 @@
+<component name="libraryTable">
+  <library name="io.dropwizard:dropwizard-core:0.7.0" type="repository">
+    <properties maven-id="io.dropwizard:dropwizard-core:0.7.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-core-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-util-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-16.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-2.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/joda-time-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-jackson-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-datatype-guava-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-module-afterburner-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-datatype-joda-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/logback-classic-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/logback-core-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-validation-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-validator-5.0.2.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/validation-api-1.1.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-logging-3.1.1.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/classmate-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.el-2.2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.el-api-2.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-configuration-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-dataformat-yaml-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-logging-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-logback-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-core-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jul-to-slf4j-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-over-slf4j-1.7.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-util-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-metrics-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-lifecycle-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-server-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet-3.0.0.v201112011016.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-http-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-io-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-jersey-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-core-1.18.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-server-1.18.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-servlet-1.18.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-jersey-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-annotation-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-jaxrs-json-provider-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-jaxrs-base-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-module-jaxb-annotations-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-servlets-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-jetty-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-jetty9-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-servlet-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-security-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-servlets-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-continuation-9.0.7.v20131107.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-jvm-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-servlets-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-healthchecks-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/metrics-json-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/argparse4j-0.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jetty-setuid-java-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/dropwizard-core-0.7.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
