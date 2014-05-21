@@ -3,6 +3,7 @@ package hack.connections;
 import hack.connections.cmx.CMXWatcher;
 import hack.connections.cmx.CMXWatcherManager;
 import hack.connections.res.MatchesResource;
+import hack.connections.res.ProfilesResource;
 import hack.connections.res.WelcomeResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -35,6 +36,7 @@ public class ConnectionsApp extends Application<ConnectionsConfiguration> {
 //        environment.jersey().register(new UserResource(dao));
 
         env.jersey().register(new MatchesResource());
+        env.jersey().register(new ProfilesResource());
         env.jersey().register(new WelcomeResource());
 
         env.lifecycle().manage(new CMXWatcherManager(new CMXWatcher()));

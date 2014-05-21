@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Matches {
 
     String macAddr;
-    Object[] matches;
+    Object[][] matches;
 
     public Matches() {
         // Jackson deserialization
     }
 
-    public Matches(String macAddr, Object[] matches) {
+    public Matches(String macAddr, Object[][] matches) {
         this.macAddr = macAddr;
         this.matches = matches;
     }
@@ -22,7 +22,7 @@ public class Matches {
     }
 
     @JsonProperty
-    public Object[] getMatches() {
+    public Object[][] getMatches() {
         return this.matches;
     }
 }

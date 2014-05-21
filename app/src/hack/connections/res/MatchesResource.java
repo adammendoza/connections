@@ -23,7 +23,7 @@ public class MatchesResource {
     public Matches showMatches(@QueryParam("macAddr") Optional<String> macAddr, @QueryParam("count") Optional<Integer> count) {
         final String key = macAddr.or("68:9c:70:e4:54:7f");
         final Integer n = count.or(10);
-        Object[] matches = CMXClientLocationEvent.Tracker.getTopNEncounters(key, n);
+        Object[][] matches = CMXClientLocationEvent.Tracker.getTopNEncounters(key, n);
         return new Matches(key, matches);
     }
 }

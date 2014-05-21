@@ -50,7 +50,7 @@ public class CMXClientLocationEvent {
         /**
          * @return array of tuple of distance metric and device
          */
-        public static Object[] getTopNEncounters(String macAddr, int count) {
+        public static Object[][] getTopNEncounters(String macAddr, int count) {
             // FIXME: n^2 won't scale
 
             HashMap<String, Double> scores = new HashMap<>();
@@ -85,7 +85,7 @@ public class CMXClientLocationEvent {
             if (ranked.length <= count)
                 return ranked;
 
-            Object[] rankedN = new Object[count];
+            Object[][] rankedN = new Object[count][];
             System.arraycopy(ranked, 0, rankedN, 0, count);
             return rankedN;
         }
