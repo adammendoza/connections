@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^dashboard/$', views.dashboard, name="summary"),
     url(r'^message/$', views.message, name="summary"),
     url(r'^upgrade/$', views.upgrade, name="summary"),
+    url(r'^graph/$', views.graph, name="summary"),
 )

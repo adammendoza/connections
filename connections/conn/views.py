@@ -27,3 +27,13 @@ def upgrade(request):
 	time.sleep(2)
 	context = {}
 	return render(request, 'upgrade.html', context)
+
+def graph(request):
+	from splinter import Browser
+	with Browser() as browser:
+		url = "file:///home/janelle/Desktop/autogenerate.html"
+		browser.visit(url)
+		time.sleep(20)
+		#print browser.html
+	return HttpResponse("Now generating graph!")
+
