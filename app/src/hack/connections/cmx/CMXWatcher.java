@@ -126,7 +126,7 @@ public class CMXWatcher implements Runnable {
     private final static DateTimeFormatter CMX_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'kk:mm:ss.SSSX");
 
     private static long parseCMXTime(String str) {
-        return LocalTime.parse(str, CMX_TIME_FORMAT).toNanoOfDay(); // FIXME: should be epoch seconds
+        return LocalTime.parse(str, CMX_TIME_FORMAT).toNanoOfDay() / 1000000; // FIXME: should be epoch seconds
     }
 
     public void stop() {
