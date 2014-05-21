@@ -23,102 +23,101 @@ public class CMXWatcher implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
             if (terminate)
-                break;
-            try {
-                XMLInputFactory factory = XMLInputFactory.newFactory();
-                String[] files = TEST_DIR.list((dir1, name) -> name.startsWith("clients-") && name.endsWith(".xml.gz"));
+                return;
+        try {
+            XMLInputFactory factory = XMLInputFactory.newFactory();
+            String[] files = TEST_DIR.list((dir1, name) -> name.startsWith("clients-") && name.endsWith(".xml.gz"));
 
-                for (String file : files) {
-                    if (terminate)
-                        break;
-                    XMLStreamReader reader = factory.createXMLStreamReader(new GZIPInputStream(new FileInputStream(new File(TEST_DIR, file))));
-                    String text = null;
+            for (String file : files) {
+                if (terminate)
+                    break;
+                XMLStreamReader reader = factory.createXMLStreamReader(new GZIPInputStream(new FileInputStream(new File(TEST_DIR, file))));
+                String text = null;
 
-                    String macAddr = null;
-                    String ipv4 = null;
-                    Double confidenceFactor = null;
-                    Double latitude = null;
-                    Double longitude = null;
-                    Long firstLocated = null;
-                    Long lastLocated = null;
+                String macAddr = null;
+                String ipv4 = null;
+                Double confidenceFactor = null;
+                Double latitude = null;
+                Double longitude = null;
+                Long firstLocated = null;
+                Long lastLocated = null;
 
-                    while (reader.hasNext()) {
-                        switch (reader.next()) {
-                            case XMLStreamConstants.START_ELEMENT:
-                                switch (reader.getLocalName()) {
-                                    // e.g. <WirelessClientLocation ipAddress="10.10.30.35 fe80:0000:0000:0000:659f:a68c:3dda:d3ad" ssId="DevNetZone" band="UNKNOWN" apMacAddress="1c:e6:c7:0d:d9:90" isGuestUser="false" dot11Status="ASSOCIATED" macAddress="6c:88:14:bc:b0:74" currentlyTracked="true" confidenceFactor="24.0">
-                                    case "WirelessClientLocation":
-                                        for (int i = 0; i < reader.getAttributeCount(); i++) {
-                                            switch (reader.getAttributeName(i).getLocalPart()) {
-                                                case "macAddress":
-                                                    macAddr = reader.getAttributeValue(i);
-                                                    break;
-                                                case "confidenceFactor":
-                                                    confidenceFactor = Double.valueOf(reader.getAttributeValue(i));
-                                                    break;
-                                                case "ipAddress":
-                                                    // take the first entry that looks like an ipv4 addr
-                                                    for (String part : reader.getAttributeValue(i).split(" ")) {
-                                                        if (IPAddressUtil.isIPv4LiteralAddress(part)) {
-                                                            ipv4 = part;
-                                                            break;
-                                                        }
+                while (reader.hasNext()) {
+                    switch (reader.next()) {
+                        case XMLStreamConstants.START_ELEMENT:
+                            switch (reader.getLocalName()) {
+                                // e.g. <WirelessClientLocation ipAddress="10.10.30.35 fe80:0000:0000:0000:659f:a68c:3dda:d3ad" ssId="DevNetZone" band="UNKNOWN" apMacAddress="1c:e6:c7:0d:d9:90" isGuestUser="false" dot11Status="ASSOCIATED" macAddress="6c:88:14:bc:b0:74" currentlyTracked="true" confidenceFactor="24.0">
+                                case "WirelessClientLocation":
+                                    for (int i = 0; i < reader.getAttributeCount(); i++) {
+                                        switch (reader.getAttributeName(i).getLocalPart()) {
+                                            case "macAddress":
+                                                macAddr = reader.getAttributeValue(i);
+                                                break;
+                                            case "confidenceFactor":
+                                                confidenceFactor = Double.valueOf(reader.getAttributeValue(i));
+                                                break;
+                                            case "ipAddress":
+                                                // take the first entry that looks like an ipv4 addr
+                                                for (String part : reader.getAttributeValue(i).split(" ")) {
+                                                    if (IPAddressUtil.isIPv4LiteralAddress(part)) {
+                                                        ipv4 = part;
+                                                        break;
                                                     }
-                                            }
+                                                }
                                         }
-                                        break;
-                                    case "Statistics":
-                                        for (int i = 0; i < reader.getAttributeCount(); i++) {
-                                            switch (reader.getAttributeName(i).getLocalPart()) {
-                                                case "firstLocatedTime":
-                                                    firstLocated = parseCMXTime(reader.getAttributeValue(i));
-                                                    break;
-                                                case "lastLocatedTime":
-                                                    lastLocated = parseCMXTime(reader.getAttributeValue(i));
-                                                    break;
-                                            }
+                                    }
+                                    break;
+                                case "Statistics":
+                                    for (int i = 0; i < reader.getAttributeCount(); i++) {
+                                        switch (reader.getAttributeName(i).getLocalPart()) {
+                                            case "firstLocatedTime":
+                                                firstLocated = parseCMXTime(reader.getAttributeValue(i));
+                                                break;
+                                            case "lastLocatedTime":
+                                                lastLocated = parseCMXTime(reader.getAttributeValue(i));
+                                                break;
                                         }
-                                        break;
-                                    case "GeoCoordinate":
-                                        for (int i = 0; i < reader.getAttributeCount(); i++) {
-                                            switch (reader.getAttributeName(i).getLocalPart()) {
-                                                case "lattitude":
-                                                case "latitude":
-                                                    latitude = Double.valueOf(reader.getAttributeValue(i));
-                                                    break;
-                                                case "longitude":
-                                                    longitude = Double.valueOf(reader.getAttributeValue(i));
-                                                    break;
-                                            }
+                                    }
+                                    break;
+                                case "GeoCoordinate":
+                                    for (int i = 0; i < reader.getAttributeCount(); i++) {
+                                        switch (reader.getAttributeName(i).getLocalPart()) {
+                                            case "lattitude":
+                                            case "latitude":
+                                                latitude = Double.valueOf(reader.getAttributeValue(i));
+                                                break;
+                                            case "longitude":
+                                                longitude = Double.valueOf(reader.getAttributeValue(i));
+                                                break;
                                         }
-                                        if (latitude == null || longitude == null) {
-                                            LOG.warn("incomplete coordinates");
-                                            break;
-                                        }
+                                    }
+                                    if (latitude == null || longitude == null) {
+                                        LOG.warn("incomplete coordinates");
                                         break;
-                                }
-                                break;
-                            case XMLStreamConstants.END_ELEMENT:
-                                switch (reader.getLocalName()) {
-                                    case "WirelessClientLocation":
-                                        LOG.info(new CMXClientLocationEvent(macAddr, ipv4, lastLocated, latitude, longitude).toString());
-                                        // reset
-                                        macAddr = null;
-                                        lastLocated = null;
-                                        latitude = null;
-                                        longitude = null;
-                                        break;
-                                }
-                                break;
-                        }
+                                    }
+                                    break;
+                            }
+                            break;
+                        case XMLStreamConstants.END_ELEMENT:
+                            switch (reader.getLocalName()) {
+                                case "WirelessClientLocation":
+                                    CMXClientLocationEvent.Tracker.registerEvent(new CMXClientLocationEvent(macAddr, lastLocated, latitude, longitude));
+                                    // reset
+                                    macAddr = null;
+                                    ipv4 = null;
+                                    lastLocated = null;
+                                    latitude = null;
+                                    longitude = null;
+                                    break;
+                            }
+                            break;
                     }
                 }
-                Thread.sleep(1000);
-            } catch (XMLStreamException | IOException | InterruptedException e) {
-                e.printStackTrace();
             }
+            Thread.sleep(1000);
+        } catch (XMLStreamException | IOException | InterruptedException e) {
+            LOG.error(e.getMessage());
         }
     }
 

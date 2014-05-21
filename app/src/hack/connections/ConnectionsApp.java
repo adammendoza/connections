@@ -2,6 +2,7 @@ package hack.connections;
 
 import hack.connections.cmx.CMXWatcher;
 import hack.connections.cmx.CMXWatcherManager;
+import hack.connections.res.MatchesResource;
 import hack.connections.res.WelcomeResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -33,10 +34,11 @@ public class ConnectionsApp extends Application<ConnectionsConfiguration> {
 //        final UserDAO dao = jdbi.onDemand(UserDAO.class);
 //        environment.jersey().register(new UserResource(dao));
 
+        env.jersey().register(new MatchesResource());
+        env.jersey().register(new WelcomeResource());
+
         env.lifecycle().manage(new CMXWatcherManager(new CMXWatcher()));
 
-        env.jersey().register(new ConnectionsResource(conf.getTemplate(), conf.getDefaultName() ));
-        env.jersey().register(new WelcomeResource());
     }
 
 }
